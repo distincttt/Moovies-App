@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;600&display=swap');
+
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.spin {
+  display: block;
+  margin-top: 15%;
+}
+
+.input {
+  max-width: 1100px;
+  margin: 20px auto 50px auto;
+  display: block;
+  font-size: 25px;
+}
