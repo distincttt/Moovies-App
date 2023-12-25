@@ -1,24 +1,60 @@
+%rating {
+  padding: 10px;
+  border-radius: 50px;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+}
+
 .card {
   list-style-type: none;
   display: flex;
   gap: 20px;
-  max-width: 500px;
+  max-width: 650px;
   max-height: 340px;
   font-family: Inter;
   box-shadow: 0px 3px 15px #d0d0d0;
+  width: 100%;
 
   &__image {
-    min-width: 230px;
-    min-height: 340px;
+    width: 100%;
+    height: 100%;
+    max-width: 230px;
+    max-height: 340px;
   }
   &__items {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    &-title {
-      display: block;
-      font-size: 20px;
-      font-weight: 600;
+    padding: 10px;
+    width: 100%;
+    &-header {
+      display: flex;
+      justify-content: space-between;
+      &-title {
+        display: block;
+        font-size: 20px;
+        font-weight: 600;
+        max-width: 250px;
+      }
+      &-rating {
+        &-red {
+          @extend %rating;
+          border: 2px solid #e90000;
+        }
+        &-orange {
+          @extend %rating;
+          border: 2px solid #e97e00;
+        }
+        &-yellow {
+          @extend %rating;
+          border: 2px solid #e9d100;
+        }
+        &-green {
+          @extend %rating;
+          border: 2px solid #66e900;
+        }
+      }
     }
     &-time {
       font-weight: 200;
@@ -26,16 +62,59 @@
     &-genres {
       font-weight: 300;
       display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
       gap: 10px;
 
       &-genre {
         border: 1px solid #b5b8b1;
         padding: 3px;
+        width: auto;
       }
     }
     &-text {
-      min-width: 250px;
+      display: block;
       padding-right: 20px;
     }
+  }
+}
+@media (max-width: 600px) {
+  .cards {
+    margin: 0 10px;
+  }
+  .card {
+    min-height: 300px;
+    padding: 10px;
+    gap: 0px;
+    &__image {
+      max-height: 130px;
+      max-width: 90px;
+    }
+    &__items {
+      width: 100%;
+      &-header {
+        &-title {
+          font-size: 12px;
+        }
+      }
+      &-text {
+        position: absolute;
+        font-size: 12px;
+        left: 20px;
+        padding-top: 125px;
+      }
+      &-genres {
+        flex-wrap: nowrap;
+        font-size: 8px;
+      }
+      &-time {
+        font-size: 12px;
+      }
+    }
+  }
+  .rate {
+    position: absolute;
+    left: 20px;
+    padding-top: 270px;
   }
 }

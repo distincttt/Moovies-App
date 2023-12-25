@@ -2,12 +2,13 @@ import { Pagination } from 'antd'
 
 import './Pagination.scss'
 
-const Pages = ({ onPageChange }) => {
+const Pages = ({ onPageChange, total, page }) => {
   return (
     <Pagination
       className="pagination"
+      current={page}
       defaultCurrent={1}
-      total={10000}
+      total={total}
       pageSize={20}
       showSizeChanger={false}
       onChange={onPageChange}

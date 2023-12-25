@@ -17,17 +17,34 @@ class GetMoovies {
       throw new Error(`Could not fetch ${url}`, `received ${res.status}`)
     } else {
       let response = await res.json()
+      const total = response.total_results
+      let localFilms = []
+      for (let i = 0; i < localStorage.length; i++) {
+        localFilms.push(JSON.parse(localStorage.getItem(i)))
+      }
       if (response.results?.length) {
-        return response.results.map((el, i) => {
+        const arrayMoovies = response.results.map((el, inc) => {
+          for (let i = 0; i < localFilms.length; i++) {
+            if (localFilms[i]?.idMovies === el.id) {
+              console.log(localFilms[i].idMovies, el.id)
+              const localFilmsReturned = { ...localFilms[i], id: inc }
+              return localFilmsReturned
+            }
+          }
           return {
-            id: i,
+            id: inc,
             title: el.title,
             dates: el.release_date,
             genres: el.genre_ids,
             text: el.overview,
             poster: el.poster_path,
+            rating: el.vote_average.toFixed(1),
+            starValue: 0,
+            idMovies: el.id,
           }
         })
+        console.log(arrayMoovies)
+        return { arrayMoovies, total, localFilms }
       } else throw new Error('Sorry, nothing was found according to your request...')
     }
   }

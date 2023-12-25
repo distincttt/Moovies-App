@@ -1,9 +1,16 @@
 .cards {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-between;
   gap: 50px;
-  margin: 0 auto;
-  max-width: 1200px;
   padding: 0px;
+}
+
+@media (max-width: 1400px) {
+  .cards {
+    justify-content: center;
+  }
+  .card {
+    max-width: 800px;
+  }
 }
